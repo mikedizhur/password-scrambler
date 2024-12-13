@@ -4,8 +4,8 @@ import (
 	"bufio"
 	"flag"
 	"fmt"
-	"slices"
 	"os"
+	"slices"
 )
 
 func main() {
@@ -16,7 +16,6 @@ func main() {
 	var strip bool
 	var private bool
 	var inPassword string
-
 
 	flag.IntVar(&number, "n", 1024, "number of variations")
 	flag.IntVar(&lines, "l", 10, "number of lines to print")
@@ -54,10 +53,14 @@ func main() {
 	passwords, _ := genPasswords(inPassword, number, aliases, recursive)
 	slices.SortFunc(passwords, fpassSort)
 
-	for _, password := range passwords[len(passwords) - lines:] {
+	for _, password := range passwords[len(passwords)-lines:] {
 		fmt.Print(password.password)
 		if !strip {
-			fmt.Print(" ", password.entropy)
+			fmt.Print(
+				" ", password.zxcvbnRes.Score,
+				" ", password.zxcvbnRes.Entropy,
+				" ", password.zxcvbnRes.CrackTime,
+			)
 		}
 		fmt.Println()
 	}

@@ -34,7 +34,6 @@ func formatTranslations(translations [][]string) ([][]string, error) {
 		return [][]string{}, errors.New("Empty translations list")
 	}
 
-
 	var outList [][]string
 
 	for _, list := range translations {
@@ -92,8 +91,7 @@ func mergeSets[K cmp.Ordered](a, b []K) []K {
  * 	check if lists match (they should not)
  * 	if they do, pass
  * 	if they do not, merge slices
-*/
-
+ */
 
 func genTransMaps(translations [][]string) aliasMap {
 	outMap := make(aliasMap) // change if type is changed !!

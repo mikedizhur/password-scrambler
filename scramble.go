@@ -1,8 +1,8 @@
 package main
 
 import (
-	"math/rand/v2"
 	"errors"
+	"math/rand/v2"
 )
 
 func scramble(str string, aliases aliasMap) string {
